@@ -19,17 +19,28 @@ async function obtenerDatosEmpleados(){
     let res =  await fetch("https://638a80f081df38ab345742af.mockapi.io/api/users/");
     let data = await res.json();
     data.forEach(element => {
-        cargar_empleado(element.nombre,element.apellido,element.trabajo,element.persona,element.btn_borrar);
+        //cargar_empleado(element.nombre,element.apellido,element.trabajo,element.persona,element.btn_borrar);
+        empleado_tabla = document.getElementById('tabla').innerHTML+=`  <tr>
+            <td>${element.nombre}</td>
+            <td>${element.apellido}</td>
+            <td>${element.trabajo}</td>
+            <td>${element.persona}</td>
+            </tr>`
+
     });
+
     console.log(data)
   }
 
+  
 
-function cargar_empleado(nombre,apellido,trabajo,persona,btn_borrar){
+
+/*
+function cargar_empleado(nombre,apellido,trabajo,persona){
     tr = document.createElement("tr");
     // creamos los "td" de nombre, apellido, imagen(pesona) y lo agregamos al "tr"
     //img = document.createElement("tr");
-    btn_borrar = document.createElement("tr");
+    // btn_borrar = document.createElement("tr");
 
     let td_nombre = document.createElement("td");
     td_nombre.textContent = nombre; // +" "+apellido // el texContent del td es el nombre
@@ -43,32 +54,24 @@ function cargar_empleado(nombre,apellido,trabajo,persona,btn_borrar){
     td_trabajo.textContent = trabajo //el texContent del td es el nombre
     tr.appendChild(td_trabajo);
 
-    //let td_persona = document.createElement("td");
-    //td_persona.innerHTML = persona; //el texContent del td es el nombre
-    //tr.appendChild(td_persona);
-
     let td_persona = document.createElement("td");
-    td_persona.innerHTML = `<img src="${persona}">`;  //el texContent del td es el nombre
+    td_persona.innerHTML = `<img src="${persona}">`;
+    //el texContent del td es el nombre
     tr.appendChild(td_persona);
-
-    //let td_btn_borrar = document.createElement("button");
-    //td_btn_borrar.innerHTML = btn_borrar //el texContent del td es el nombre
-    //tr.appendChild(td_btn_borrar);
-
+    
     let td_btn_borrar = document.createElement("td");
     //td_btn_borrar.innerHTML = btn_borrar //el texContent del td es el nombre
     tr.appendChild(td_btn_borrar);
+    
     let botonEliminar = document.createElement("button");
     botonEliminar.innerHTML = 'Eliminar'
     td_btn_borrar.appendChild(botonEliminar);
-
-
+   
 
     empleado_tabla.appendChild(tr);
-    boton_borrar.appendChild(btn_borrar)
-  
-}
 
+  }
+*/
 
 
 async function EliminarDatos(id){
