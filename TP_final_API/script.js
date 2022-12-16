@@ -1,18 +1,17 @@
 async function obtenerDatos(){
-    let respuesta = await fetch("https://rickandmortyapi.com/api/character")
-    let datos = await respuesta.json();
+    const respuesta = await fetch("https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados")
+    const datos = await respuesta.json();
     console.log(datos);
 
-    datos.results.forEach(element => {
+    datos.forEach(element => {
 
         document.getElementById('table').innerHTML+=`  <tr>
 
-             <td>${element.name}</td>
-             <td>${element.status}</td>
-             <td><img src="${element.image}"></td>
+             <td>${element.nombre} ${element.apellido}</td>
+            
+             <td><img src="${element.foto}"></td>
              <td><button class="ver" id="${element.id}">Ver</button></td>
-             </tr>`      
-    
+             </tr>`            
    });
 
    let btn = document.querySelectorAll(".ver");
@@ -25,26 +24,48 @@ async function obtenerDatos(){
 } 
 
 async function mostrarUno(id){
-    let respuesta = await fetch("https://rickandmortyapi.com/api/character/"+id)
-    let datos = await respuesta.json();
+    const respuesta = await fetch("https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados/"+id)
+    const datos = await respuesta.json();
     console.log(datos);
 
-    let personaje = document.getElementById("personaje");
-    personaje.innerHTML = "";
-    let nombre = document.createElement("h4");
-    nombre.innerHTML = datos.name;
+    let empleado = document.getElementById("empleado");
+    empleado.innerHTML = "";
 
-    let estado = document.createElement("h4");
-    estado.innerHTML = datos.status;
+    let nombre = document.createElement("h4");
+    nombre.innerHTML = datos.nombre;
+
+    let apellido = document.createElement("h4");
+    apellido.innerHTML = datos.apellido;
 
     let imagen = document.createElement("h4");
-    imagen.innerHTML = `<img src="${datos.image}"></img>`
+    imagen.innerHTML = `<img src="${datos.foto}"></img>`
 
     
-    personaje.appendChild(nombre);
-    personaje.appendChild(estado);
-    personaje.appendChild(imagen);
+    empleado.appendChild(nombre);
+    empleado.appendChild(apellido);
+    empleado.appendChild(imagen);
 
 }
 
+let misDatos ={
+    "nombre":"Dario",
+    "apellido":"Lopez",
+    "area":"Developed",
+    "domicilio":"Rio Grande",
+    "foto":"https://http2.mlstatic.com/D_NQ_NP_809466-MLA46695132291_072021-O.jpg",
+    "id":"89"
+}
+
+async function modificarDatos(misDatos){
+    const respuesta = await fetch("https://6398b453fe03352a94dbe15d.mockapi.io/api/empleados/"+misDatos.id, {
+        method: "PUT",
+        body:JSON.stringify(misDatos),
+        headers:{"Content-type":"application/json"}
+    });
+    const data = await respuesta.json();
+        console.log(data);
+}
+
+
+modificarDatos(misDatos);
 obtenerDatos();
