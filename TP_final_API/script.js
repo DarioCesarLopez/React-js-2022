@@ -53,7 +53,7 @@ let misDatos ={
     "area":"Developed",
     "domicilio":"Rio Grande",
     "foto":"https://http2.mlstatic.com/D_NQ_NP_809466-MLA46695132291_072021-O.jpg",
-    "id":"89"
+    "id":"3"
 }
 
 async function modificarDatos(misDatos){
