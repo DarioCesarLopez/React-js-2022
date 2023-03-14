@@ -83,15 +83,15 @@ button::after {
         bottom: 0;
         left: 100%;
         right: -100%;
-        -webkit-transition: all 0.35s;
-        transition: all 0.35s;
+        -webkit-transition: all 1.05s;
+        transition: all 1.05s;
       }
 button:hover:after {
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
-        -webkit-transition: all 0.35s;
-        transition: all 0.35s;
+        -webkit-transition: all 0.40s;
+        transition: all 0.45s;
       
 }
