@@ -1,2 +1,2 @@
-# React-js-2022
-Clases de React js 2022 Web Full Stack
+# React-js-2022 y 2023
+Clases de React js 2022 y 2023 web Full Stack
